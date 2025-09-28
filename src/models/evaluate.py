@@ -10,10 +10,10 @@ from sklearn.metrics import mean_absolute_percentage_error
 
 
 import dagshub
-dagshub.init(repo_owner='himanshu1703', repo_name='uber-demand-prediction', mlflow=True)
+dagshub.init(repo_owner='Advait-Pathak9222', repo_name='Taxi_Cab_Demand_Predictor', mlflow=True)
 
 # set the mlflow tracking uri
-mlflow.set_tracking_uri("https://dagshub.com/himanshu1703/uber-demand-prediction.mlflow")
+mlflow.set_tracking_uri("https://dagshub.com/Advait-Pathak9222/Taxi_Cab_Demand_Predictor.mlflow")
 
 # set the experiment name
 mlflow.set_experiment("DVC Pipeline")
@@ -110,9 +110,11 @@ if __name__ == "__main__":
         model_signature = mlflow.models.infer_signature(X_test_encoded, y_pred)
         
         # log sklearn model
-        logged_model = mlflow.sklearn.log_model(model, "demand_prediction", 
-                                 signature=model_signature,
-                                 pip_requirements="requirements.txt")
+        logged_model = mlflow.sklearn.log_model(model, 
+                                        name="demand_prediction", 
+                                        signature=model_signature,
+                                        pip_requirements="requirements.txt")
+
         
         
     # get the run id and arifact uri
